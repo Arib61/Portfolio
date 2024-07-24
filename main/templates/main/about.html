@@ -1,0 +1,57 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<!-- About Section -->
+<section id="about" class="about">
+    <div class="about-text">
+        <h1 class="my-heading">About Me</h1>
+        <p class="lead-para">
+            GeeksforGeeks is a leading platform that provides computer science resources and coding challenges for
+            programmers and technology enthusiasts, along with interview and exam preparations for upcoming
+            aspirants. With a strong emphasis on enhancing coding skills and knowledge, it has become a trusted
+            destination for over 12 million plus registered users worldwide. The platform offers a vast collection
+            of tutorials, practice problems, interview tutorials, articles, and courses, covering various domains
+            of computer science.
+        </p>
+        <p>
+            Our exceptional mentors hailing from top colleges & organizations have the ability to guide you on a
+            journey from the humble beginnings of coding to the pinnacle of expertise. Under their guidance watch
+            your skills flourish as we lay the foundation and help you conquer the world of coding.
+        </p>
+    </div>
+    <div class="about-image">
+        <img src="{% static 'images/heroImg2.avif' %}" alt="About Image">
+    </div>
+</section>
+<section class="skills">
+    <h2>Technical Skills</h2>
+    <ul>
+        {% for skill in tech_skills %}
+        <li>{{ skill.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Soft Skills</h2>
+    <ul>
+        {% for skill in soft_skills %}
+        <li>{{ skill.name }}</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section class="certificates">
+    <h2>Certificates</h2>
+    <ul>
+        {% for certificate in certificates %}
+        <li>
+            <strong>{{ certificate.name }}</strong> - {{ certificate.organization }}
+            ({{ certificate.date }})<br>
+            {{ certificate.description }}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
