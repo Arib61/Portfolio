@@ -1,0 +1,1 @@
+run = ["sh", "repl_init.sh"]
