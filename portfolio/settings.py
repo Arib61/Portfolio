@@ -2,12 +2,11 @@ import os
 from pathlib import Path
 import environ
 
-env = environ.Env(
-    # Définir des valeurs par défaut pour les variables d'environnement
-    DEBUG=(bool, False)
-)
+# Initialiser environ
+env = environ.Env()
+
+# Lire le fichier .env
 environ.Env.read_env()
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -70,17 +69,15 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
         'NAME': env('DB_NAME', default='portfolio'),
         'USER': env('DB_USER', default='root'),
         'PASSWORD': env('DB_PASSWORD', default=''),
         'HOST': env('DB_HOST', default='localhost'),
         'PORT': env('DB_PORT', default='3306'),
-        'OPTIONS': {
-            'use_pure': True,  # Ajoutez cette ligne pour utiliser le connecteur Python pur
-        }
     }
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
